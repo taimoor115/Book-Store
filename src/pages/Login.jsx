@@ -40,6 +40,12 @@ const LoginPage = () => {
         <Button variant="primary" type="submit">
           Login
         </Button>
+        <button
+          onClick={firebase.signInWithGoogle}
+          className="btn btn-warning ms-5"
+        >
+          Login With Google
+        </button>
       </Form>
     </div>
   );

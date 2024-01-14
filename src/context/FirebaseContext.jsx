@@ -4,6 +4,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -20,6 +22,7 @@ const FirebaseContext = createContext(null);
 export const useFirebase = () => useContext(FirebaseContext);
 
 const auth = getAuth(firebaseApp);
+const provider = new GoogleAuthProvider(firebaseApp);
 
 export const FirebaseProvider = (props) => {
   const signUpWithEmailPassword = (email, password) => {
@@ -28,8 +31,13 @@ export const FirebaseProvider = (props) => {
   const signInUser = (email, password) => {
     signInWithEmailAndPassword(auth, email, password);
   };
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider);
+  };
   return (
-    <FirebaseContext.Provider value={{ signUpWithEmailPassword, signInUser }}>
+    <FirebaseContext.Provider
+      value={{ signUpWithEmailPassword, signInUser, signInWithGoogle }}
+    >
       {props.children}
     </FirebaseContext.Provider>
   );
