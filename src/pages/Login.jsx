@@ -1,18 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
 import { useFirebase } from "../context/FirebaseContext";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const firebase = useFirebase();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (firebase.isLoggedIn) {
+      navigate("/");
+    }
+  }, [navigate, firebase]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Signing ");
-    const result = await firebase.signInUser(email, password);
-    console.log("Success", result);
+    await firebase.signInUser(email, password);
   };
   return (
     <div className="container">
