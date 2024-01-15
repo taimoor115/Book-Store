@@ -1,3 +1,4 @@
+import HomePage from "./Components/HomePage";
 import MyNavBar from "./Components/MyNavBar";
 import Listing from "./pages/Listing";
 import LoginPage from "./pages/Login";
@@ -8,7 +9,7 @@ const App = () => {
     <div>
       <MyNavBar />
       <Routes>
-        <Route path="/" element={<h1>Home</h1>}></Route>
+        <Route path="/" element={<HomePage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/book/list" element={<Listing />}></Route>
