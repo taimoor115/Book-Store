@@ -1,16 +1,22 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
+import { useFirebase } from "../context/FirebaseContext";
 
 const Listing = () => {
   const [name, setName] = useState("");
   const [isbn, setISBN] = useState("");
   const [price, setPrice] = useState("");
   const [picture, setPicture] = useState("");
+  const firebase = useFirebase();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await firebase.handleCreateNewListing(name, isbn, price, picture);
+  };
   return (
     <div className="container mt-5">
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Book Name</Form.Label>
           <Form.Control
@@ -45,7 +51,6 @@ const Listing = () => {
           <Form.Label>Cover Picture</Form.Label>
           <Form.Control
             onChange={(event) => setPicture(event.target.files[0])}
-            value={picture}
             type="file"
           />
         </Form.Group>
