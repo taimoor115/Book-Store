@@ -22,7 +22,7 @@ const Register = () => {
     console.log("Success", result);
   };
   return (
-    <div className="container">
+    <div className="container mt-5">
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -31,10 +31,8 @@ const Register = () => {
             onChange={(event) => setEmail(event.target.value)}
             value={email}
             placeholder="Enter email"
+            required
           />
-          <Form.Text className="text-muted">
-            We will never share your email with anyone else
-          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -44,6 +42,7 @@ const Register = () => {
             value={password}
             type="password"
             placeholder="Password"
+            required
           />
         </Form.Group>
 

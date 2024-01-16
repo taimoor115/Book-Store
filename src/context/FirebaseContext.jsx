@@ -18,19 +18,15 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCU37T2w8K1EZPNuovzgWzLLk4MZB_KCcg",
-
   authDomain: "book-store-1306c.firebaseapp.com",
-
   projectId: "book-store-1306c",
-
   storageBucket: "book-store-1306c.appspot.com",
-
   messagingSenderId: "496683351398",
-
   appId: "1:496683351398:web:389ff70d032bf8e8bc1ca7",
 };
 
@@ -62,8 +58,6 @@ export const FirebaseProvider = (props) => {
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider);
   };
-
-  console.log(user);
 
   const handleCreateNewListing = async (name, isbn, price, cover) => {
     const imageRef = ref(storage, `uploads/images/${Date.now()}-${cover.name}`);
@@ -116,6 +110,9 @@ export const FirebaseProvider = (props) => {
     const result = await getDocs(collectionRef);
     return result;
   };
+  const loggedOut = () => {
+    signOut(auth);
+  };
   const isLoggedIn = user ? true : false;
 
   return (
@@ -133,6 +130,7 @@ export const FirebaseProvider = (props) => {
         fetchMyBooks,
         user,
         getOrders,
+        loggedOut,
       }}
     >
       {props.children}
