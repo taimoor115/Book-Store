@@ -23,10 +23,7 @@ const Cards = (props) => {
             This book has a title {props.name} and this book is sold by{" "}
             {props.displayName} and this book costs Rs.{props.price}
           </Card.Text>
-          <Button
-            variant="dark"
-            onClick={() => navigate(`/book/view/${props.id}`)}
-          >
+          <Button variant="dark" onClick={() => navigate(props.link)}>
             View
           </Button>
         </Card.Body>

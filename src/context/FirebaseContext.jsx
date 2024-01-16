@@ -7,6 +7,8 @@ import {
   getDocs,
   getDoc,
   doc,
+  query,
+  where,
 } from "firebase/firestore";
 import { ref, getStorage, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
@@ -101,6 +103,13 @@ export const FirebaseProvider = (props) => {
       quantity: Number(quantity),
     });
   };
+
+  const fetchMyBooks = async (userId) => {
+    const collectionRef = collection(firestore, "books");
+    const q = query(collectionRef, where("userID", "==", userId));
+    const result = await getDocs(q);
+    return result;
+  };
   const isLoggedIn = user ? true : false;
 
   return (
@@ -115,6 +124,8 @@ export const FirebaseProvider = (props) => {
         getImageURL,
         getBookById,
         placeOrder,
+        fetchMyBooks,
+        user,
       }}
     >
       {props.children}

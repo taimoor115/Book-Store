@@ -21,8 +21,7 @@ const Details = () => {
     }
   }, [data]);
   const orderBook = async () => {
-    const result1 = await firebase.placeOrder(params.bookId, quantity);
-    console.log("Order", result1);
+    await firebase.placeOrder(params.bookId, quantity);
   };
 
   if (data == null) return <h1>Loading ....</h1>;

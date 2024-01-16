@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useFirebase } from "../context/FirebaseContext";
-import Cards from "./Cards";
+import Cards from "../Components/Cards";
 import CardGroup from "react-bootstrap/CardGroup";
 
 const HomePage = () => {
@@ -16,7 +16,12 @@ const HomePage = () => {
     <div>
       <CardGroup>
         {books.map((books) => (
-          <Cards key={books.id} id={books.id} {...books.data()} />
+          <Cards
+            link={`/book/view/${books.id}`}
+            key={books.id}
+            id={books.id}
+            {...books.data()}
+          />
         ))}
       </CardGroup>
     </div>
