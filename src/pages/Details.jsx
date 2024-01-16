@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useFirebase } from "../context/FirebaseContext";
 import { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
+import MyNavBar from "../Components/MyNavBar";
 
 const Details = () => {
   const params = useParams();
@@ -27,6 +28,7 @@ const Details = () => {
   if (data == null) return <h1>Loading ....</h1>;
   return (
     <>
+    <MyNavBar />
       <div className="container mt-4">
         <h1>Book:</h1>
         <p>{data.name}</p>

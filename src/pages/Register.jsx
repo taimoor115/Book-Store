@@ -17,40 +17,43 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Signing ");
-    const result = await firebase.signUpWithEmailPassword(email, password);
-    console.log("Success", result);
+    await firebase.signUpWithEmailPassword(email, password);
   };
   return (
-    <div className="container mt-5">
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            onChange={(event) => setEmail(event.target.value)}
-            value={email}
-            placeholder="Enter email"
-            required
-          />
-        </Form.Group>
+    <>
+      <h1 className="container d-flex justify-content-center mt-5">
+        Register Account
+      </h1>
+      <div className="container mt-5">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              onChange={(event) => setEmail(event.target.value)}
+              value={email}
+              placeholder="Enter email"
+              required
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            onChange={(event) => setPassword(event.target.value)}
-            value={password}
-            type="password"
-            placeholder="Password"
-            required
-          />
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              onChange={(event) => setPassword(event.target.value)}
+              value={password}
+              type="password"
+              placeholder="Password"
+              required
+            />
+          </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Create Account
-        </Button>
-      </Form>
-    </div>
+          <Button variant="dark" type="submit">
+            Create Account
+          </Button>
+        </Form>
+      </div>
+    </>
   );
 };
 

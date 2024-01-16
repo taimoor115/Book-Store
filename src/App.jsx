@@ -7,12 +7,9 @@ import Register from "./pages/Register";
 import Details from "./pages/Details";
 import Order from "./pages/Order";
 import ViewOrder from "./pages/ViewOrder";
-// Components
-import MyNavBar from "./Components/MyNavBar";
 const App = () => {
   return (
     <div>
-      <MyNavBar />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>

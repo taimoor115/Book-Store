@@ -21,6 +21,8 @@ const LoginPage = () => {
     await firebase.signInUser(email, password);
   };
   return (
+    <>
+     <h1 className="container d-flex justify-content-center mt-5">Login</h1>
     <div className="container mt-5">
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -30,6 +32,7 @@ const LoginPage = () => {
             onChange={(event) => setEmail(event.target.value)}
             value={email}
             placeholder="Enter email"
+            required
           />
         </Form.Group>
 
@@ -40,20 +43,25 @@ const LoginPage = () => {
             value={password}
             type="password"
             placeholder="Password"
+            required
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
-        <button
-          onClick={firebase.signInWithGoogle}
-          className="btn btn-warning ms-5"
-        >
-          Login With Google
-        </button>
+        <div className="d-flex">
+          <Button variant="dark" type="submit">
+            Login
+          </Button>
+          <button
+            onClick={firebase.signInWithGoogle}
+            className="btn btn-dark ms-2"
+          >
+            Google
+          </button>
+          <Button className="btn btn-dark ms-2" href="/register">Register Account</Button>
+        </div>
       </Form>
     </div>
+    </>
   );
 };
 

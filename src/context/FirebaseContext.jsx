@@ -35,6 +35,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const FirebaseContext = createContext(null);
 export const useFirebase = () => useContext(FirebaseContext);
 
+// Instances
 const auth = getAuth(firebaseApp);
 const provider = new GoogleAuthProvider(firebaseApp);
 const firestore = getFirestore(firebaseApp);
@@ -110,10 +111,11 @@ export const FirebaseProvider = (props) => {
     const result = await getDocs(collectionRef);
     return result;
   };
-  const loggedOut = () => {
+  const loggedOut = (auth) => {
     signOut(auth);
   };
   const isLoggedIn = user ? true : false;
+  console.log(isLoggedIn);
 
   return (
     <FirebaseContext.Provider
@@ -131,6 +133,7 @@ export const FirebaseProvider = (props) => {
         user,
         getOrders,
         loggedOut,
+        auth,
       }}
     >
       {props.children}

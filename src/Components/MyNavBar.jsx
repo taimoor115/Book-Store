@@ -13,7 +13,13 @@ const MyNavBar = () => {
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/book/list">Add Listing</Nav.Link>
           <Nav.Link href="/book/orders">Orders</Nav.Link>
-          <Nav.Link onClick={firebase.loggedOut()} href="/login">
+          {firebase.isLoggedIn ? null : (
+            <Nav.Link href="/login">Login</Nav.Link>
+          )}
+          <Nav.Link
+            onClick={() => firebase.loggedOut(firebase.auth)}
+            href="/login"
+          >
             Logout
           </Nav.Link>
         </Nav>
