@@ -1,9 +1,12 @@
+import { Route, Routes } from "react-router-dom";
+// Pages
 import HomePage from "./Components/HomePage";
-import MyNavBar from "./Components/MyNavBar";
 import Listing from "./pages/Listing";
 import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
-import { Routes, Route } from "react-router-dom";
+import Details from "./pages/Details";
+// Components
+import MyNavBar from "./Components/MyNavBar";
 const App = () => {
   return (
     <div>
@@ -13,6 +16,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/book/list" element={<Listing />}></Route>
+        <Route path="/book/view/:bookId" element={<Details />}></Route>
       </Routes>
     </div>
   );

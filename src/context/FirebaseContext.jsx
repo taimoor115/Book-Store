@@ -1,6 +1,13 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  addDoc,
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+} from "firebase/firestore";
 import { ref, getStorage, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   getAuth,
@@ -12,13 +19,19 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAl3WDN6ERMzQ1vyNY16arl2qRYu0NQdzo",
-  authDomain: "bookift-acc8f.firebaseapp.com",
-  projectId: "bookift-acc8f",
-  storageBucket: "bookift-acc8f.appspot.com",
-  messagingSenderId: "58341789854",
-  appId: "1:58341789854:web:8c8621b4b6003f9f2f2b8f",
+  apiKey: "AIzaSyCU37T2w8K1EZPNuovzgWzLLk4MZB_KCcg",
+
+  authDomain: "book-store-1306c.firebaseapp.com",
+
+  projectId: "book-store-1306c",
+
+  storageBucket: "book-store-1306c.appspot.com",
+
+  messagingSenderId: "496683351398",
+
+  appId: "1:496683351398:web:389ff70d032bf8e8bc1ca7",
 };
+
 const firebaseApp = initializeApp(firebaseConfig);
 
 const FirebaseContext = createContext(null);
@@ -72,6 +85,11 @@ export const FirebaseProvider = (props) => {
   const getImageURL = (path) => {
     return getDownloadURL(ref(storage, path));
   };
+  const getBookById = async (id) => {
+    const docRef = doc(firestore, "books", id);
+    const result = await getDoc(docRef, id);
+    return result;
+  };
   const isLoggedIn = user ? true : false;
 
   return (
@@ -84,6 +102,7 @@ export const FirebaseProvider = (props) => {
         handleCreateNewListing,
         listAllBooks,
         getImageURL,
+        getBookById,
       }}
     >
       {props.children}

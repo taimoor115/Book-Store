@@ -15,8 +15,8 @@ const HomePage = () => {
   return (
     <div>
       <CardGroup>
-        {books.map((books, index) => (
-          <Cards key={index} {...books.data()} />
+        {books.map((books) => (
+          <Cards key={books.id} id={books.id} {...books.data()} />
         ))}
       </CardGroup>
     </div>
