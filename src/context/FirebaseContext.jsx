@@ -90,6 +90,17 @@ export const FirebaseProvider = (props) => {
     const result = await getDoc(docRef, id);
     return result;
   };
+
+  const placeOrder = (bookId, quantity) => {
+    const collectionRef = collection(firestore, "books", bookId, "order");
+    addDoc(collectionRef, {
+      userID: user.uid,
+      userEmail: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      quantity: Number(quantity),
+    });
+  };
   const isLoggedIn = user ? true : false;
 
   return (
@@ -103,6 +114,7 @@ export const FirebaseProvider = (props) => {
         listAllBooks,
         getImageURL,
         getBookById,
+        placeOrder,
       }}
     >
       {props.children}
