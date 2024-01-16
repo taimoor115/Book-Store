@@ -6,6 +6,7 @@ import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
 import Details from "./pages/Details";
 import Order from "./pages/Order";
+import ViewOrder from "./pages/ViewOrder";
 // Components
 import MyNavBar from "./Components/MyNavBar";
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/book/list" element={<Listing />}></Route>
         <Route path="/book/view/:bookId" element={<Details />}></Route>
         <Route path="/book/orders" element={<Order />}></Route>
+        <Route path="/books/orders/:bookId" element={<ViewOrder />}></Route>
       </Routes>
     </div>
   );

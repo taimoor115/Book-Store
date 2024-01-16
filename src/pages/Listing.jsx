@@ -24,6 +24,7 @@ const Listing = () => {
             onChange={(event) => setName(event.target.value)}
             value={name}
             placeholder="Enter Book Name"
+            required
           />
         </Form.Group>
 
@@ -34,6 +35,7 @@ const Listing = () => {
             value={isbn}
             type="text"
             placeholder="ISBN Number"
+            required
           />
         </Form.Group>
 
@@ -44,6 +46,7 @@ const Listing = () => {
             value={price}
             type="text"
             placeholder="Enter Book Price"
+            required
           />
         </Form.Group>
 
@@ -52,6 +55,7 @@ const Listing = () => {
           <Form.Control
             onChange={(event) => setPicture(event.target.files[0])}
             type="file"
+            required
           />
         </Form.Group>
 
