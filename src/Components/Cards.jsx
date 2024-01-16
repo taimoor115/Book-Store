@@ -12,7 +12,6 @@ const Cards = (props) => {
   useEffect(() => {
     firebase.getImageURL(props.imageURL).then((image) => setURL(image));
   });
-  console.log(props);
   return (
     <div>
       <Card style={{ width: "13rem", margin: "20px" }}>

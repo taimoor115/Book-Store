@@ -115,7 +115,6 @@ export const FirebaseProvider = (props) => {
     signOut(auth);
   };
   const isLoggedIn = user ? true : false;
-  console.log(isLoggedIn);
 
   return (
     <FirebaseContext.Provider

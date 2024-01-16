@@ -11,7 +11,6 @@ const HomePage = () => {
   useEffect(() => {
     firebase.listAllBooks().then((books) => setBooks(books.docs));
   });
-  console.log(books);
 
   return (
     <>
